@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Square : MonoBehaviour
 {
-    [SerializeField] private Color baseColor;
-    [SerializeField] private Color offsetColor;
+    ////[SerializeField] private Color baseColor;
+    ////[SerializeField] private Color offsetColor;
     [SerializeField] private SpriteRenderer renderer;
     [SerializeField] private GameObject highlight;
 
-    public void Init(bool isOffset)
+    public void Init(Color color)
     {
-        renderer.color = isOffset ? offsetColor : baseColor;
+        renderer.color = color;
     }
 
     void OnMouseEnter()

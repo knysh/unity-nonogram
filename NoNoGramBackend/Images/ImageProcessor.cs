@@ -1,6 +1,5 @@
 ﻿using SkiaSharp;
 using System.Collections.Generic;
-using System.Reflection;
 
 namespace NoNoGramBackend
 {
@@ -20,10 +19,10 @@ namespace NoNoGramBackend
 
         private SKBitmap GetBitmap(string imageName)
         {
-            var resourceID = $"NoNoGramBackend.Resources.{imageName}.png";
-            var assembly = GetType().GetTypeInfo().Assembly;
-            using var stream = assembly.GetManifestResourceStream(resourceID);
-            return SKBitmap.Decode(stream);
+            //var resourceID = $"NoNoGramBackend.Resources.{imageName}.png";
+            //var assembly = GetType().GetTypeInfo().Assembly;
+            //using var stream = assembly.GetManifestResourceStream(resourceID);
+            return SKBitmap.Decode($"E:\\sergey\\unity-nonogram\\NoNoGram\\Assets\\Scenes\\{imageName}.png");
         }
     }
 }
