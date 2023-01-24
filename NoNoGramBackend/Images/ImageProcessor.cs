@@ -1,4 +1,5 @@
 ﻿using SkiaSharp;
+using System.Collections.Generic;
 using System.Reflection;
 
 namespace NoNoGramBackend
@@ -9,6 +10,12 @@ namespace NoNoGramBackend
         {
             var image = GetBitmap(imageName);
             ImageConvertor.ConverToBWImage(image, imageName);
+        }
+
+        public List<List<SquareInfo>> GetSquareInfos(int squareSize, string imageName)
+        {
+            var image = GetBitmap(imageName);
+            return ImageConvertor.GetSquareInfos(squareSize, image);
         }
 
         private SKBitmap GetBitmap(string imageName)
