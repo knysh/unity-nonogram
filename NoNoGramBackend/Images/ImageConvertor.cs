@@ -30,9 +30,9 @@ namespace NoNoGramBackend
             data.SaveTo(stream);
         }
 
-        public static List<List<SquareInfo>> GetSquareInfos(int squareSize, SKBitmap sourceImage)
+        public static SquareInfos GetSquareInfos(int squareSize, SKBitmap sourceImage)
         {
-            var squareInfos = new List<List<SquareInfo>>();
+            var squareInfos = new List<SquareInfoRow>();
             var xSquares = GetNumberOfSquares(squareSize, sourceImage.Width);
             var xOffset = GetOffset(squareSize, sourceImage.Width);
             var ySquares = GetNumberOfSquares(squareSize, sourceImage.Height);
@@ -54,10 +54,16 @@ namespace NoNoGramBackend
                     });
                 }
 
-                squareInfos.Add(squareInfosRow);
+                squareInfos.Add(new SquareInfoRow()
+                {
+                    Row = squareInfosRow
+                });
             }
 
-            return squareInfos;
+            return new SquareInfos()
+            {
+                Squares = squareInfos
+            };
         }
 
         private static Color GetSquareColor (SKBitmap image)
