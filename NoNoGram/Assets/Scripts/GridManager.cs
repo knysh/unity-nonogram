@@ -18,7 +18,7 @@ public class GridManager : MonoBehaviour
 
     void Start()
     {
-        var req = GetRequest("https://localhost:7010/random_game?squareSize=8");
+        var req = GetRequest("https://localhost:7010/random_game?squareSize=3");
         while (req.MoveNext());
 
         width = squareInfos.squares.First().row.Count;
@@ -33,9 +33,6 @@ public class GridManager : MonoBehaviour
 
             foreach(var squareInfoCol in squareInfoRow.row)
             {
-                Debug.Log($"Square {squareInfoCol.color}");
-                Debug.Log($"Square {squareInfoCol.x}");
-                Debug.Log($"Square {squareInfoCol.y}");
                 var spawnedTile = Instantiate(squarePrefab, new Vector3(squareInfoCol.x, squareInfoCol.y), Quaternion.identity);
                 spawnedTile.name = $"Square {squareInfoCol.x} {squareInfoCol.y}";
                 Color currentColor;
