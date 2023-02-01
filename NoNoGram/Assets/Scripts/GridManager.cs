@@ -2,6 +2,7 @@ using NoNoGramBackend;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -9,6 +10,7 @@ using UnityEngine.Networking;
 public class GridManager : MonoBehaviour
 {
     [SerializeField] private Square squarePrefab;
+    [SerializeField] private NSquare nSquarePrefab;
     [SerializeField] private Transform cam;
 
     private int width;
@@ -28,6 +30,8 @@ public class GridManager : MonoBehaviour
 
     void GenerateGrid()
     {
+        var nSquare = Instantiate(nSquarePrefab, new Vector3(-1, -1), Quaternion.identity);
+        nSquare.SetCount(111);
         squares = new Dictionary<Vector2, Square>();
         foreach (var squareInfoRow in squareInfos.squares) {
 
