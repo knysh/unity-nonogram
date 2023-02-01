@@ -1,4 +1,4 @@
-﻿namespace NoNoGramBackend
+﻿namespace NoNoGramBackend.Models
 {
     public class SquareInfo
     {

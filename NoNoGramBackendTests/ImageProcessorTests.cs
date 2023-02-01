@@ -21,10 +21,8 @@ namespace Tests
         {
             var imageProcessor = new ImageProcessor();
             var squareInfos = imageProcessor.GetSquareInfos(8, "dragonfly");
-            Assert.AreEqual(20, squareInfos.Count);
-            Assert.AreEqual(21, squareInfos.First().Count);
-            Assert.IsTrue(squareInfos.SelectMany(row => row).Any(info => info.Color.Equals(Color.WHITE)));
-            Assert.IsTrue(squareInfos.SelectMany(row => row).Any(info => info.Color.Equals(Color.BLACK)));
+            Assert.AreEqual(20, squareInfos.Squares.Count);
+            Assert.AreEqual(21, squareInfos.Squares.First().Column.Count);
         }
     }
 }

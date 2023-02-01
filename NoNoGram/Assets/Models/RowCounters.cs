@@ -4,8 +4,8 @@ using System.Collections.Generic;
 namespace NoNoGramBackend
 {
     [Serializable]
-    public class SquareInfoRow
+    public class RowCounters
     {
-        public List<SquareInfo> row;
+        public List<LineCounters> lineCounters;
     }
 }
