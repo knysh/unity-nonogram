@@ -1,4 +1,6 @@
-﻿using SkiaSharp;
+﻿using NoNoGramBackend.Models;
+using NoNoGramBackend.Squares;
+using SkiaSharp;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -62,7 +64,9 @@ namespace NoNoGramBackend
 
             return new SquareInfos()
             {
-                Squares = squareInfos
+                Squares = squareInfos,
+                ColumnCouners = SquareUtil.GetColumnCouners(squareInfos),
+                RowCouners = null
             };
         }
 
