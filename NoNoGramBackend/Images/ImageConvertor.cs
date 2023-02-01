@@ -34,7 +34,7 @@ namespace NoNoGramBackend
 
         public static SquareInfos GetSquareInfos(int squareSize, SKBitmap sourceImage)
         {
-            var squareInfos = new List<SquareInfoRow>();
+            var squareInfos = new List<SquareInfoColumn>();
             var xSquares = GetNumberOfSquares(squareSize, sourceImage.Width);
             var xOffset = GetOffset(squareSize, sourceImage.Width);
             var ySquares = GetNumberOfSquares(squareSize, sourceImage.Height);
@@ -42,13 +42,13 @@ namespace NoNoGramBackend
 
             for (int i = 0; i < xSquares; i++)
             {
-                var squareInfosRow = new List<SquareInfo>();
+                var squareInfosColumn = new List<SquareInfo>();
                 for (int j = 0; j < ySquares; j++)
                 {
                     var rectI = SKRectI.Create(xOffset + squareSize * i, yOffset + squareSize * j, squareSize, squareSize);
                     using var squareImage = new SKBitmap(new SKImageInfo(squareSize, squareSize));
                     var ok = sourceImage.ExtractSubset(squareImage, rectI);
-                    squareInfosRow.Add(new SquareInfo
+                    squareInfosColumn.Add(new SquareInfo
                     {
                         Color = GetSquareColor(squareImage),
                         X = i,
@@ -56,17 +56,17 @@ namespace NoNoGramBackend
                     });
                 }
 
-                squareInfos.Add(new SquareInfoRow()
+                squareInfos.Add(new SquareInfoColumn()
                 {
-                    Row = squareInfosRow
+                    Column = squareInfosColumn
                 });
             }
 
             return new SquareInfos()
             {
                 Squares = squareInfos,
-                ColumnCouners = SquareUtil.GetColumnCouners(squareInfos),
-                RowCouners = null
+                ColumnCounters = null,
+                RowCounters = SquareUtil.GetRowsCounters(squareInfos)
             };
         }
 

@@ -6,10 +6,10 @@ namespace NoNoGramBackend.Models
 {
     public class SquareInfos
     {
-        public List<SquareInfoRow> Squares { get; set; }
+        public List<SquareInfoColumn> Squares { get; set; }
 
-        public ColumnCouners ColumnCouners { get; set; }
+        public ColumnCounters ColumnCounters { get; set; }
 
-        public RowCouners RowCouners { get; set; }
+        public RowCounters RowCounters { get; set; }
     }
 }

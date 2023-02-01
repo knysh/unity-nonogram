@@ -2,9 +2,9 @@
 
 namespace NoNoGramBackend.Models
 {
-    public class LineCouners
+    public class LineCounters
     {
-        public List<int> Couners { get; set; }
+        public List<int> Counters { get; set; }
 
     }
 }

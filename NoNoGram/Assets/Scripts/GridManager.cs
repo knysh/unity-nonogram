@@ -23,19 +23,18 @@ public class GridManager : MonoBehaviour
         var req = GetRequest("https://localhost:7010/random_game?squareSize=3");
         while (req.MoveNext());
 
-        width = squareInfos.squares.First().row.Count;
+        width = squareInfos.squares.First().column.Count;
         height = squareInfos.squares.Count;
-        GenerateGrid();
+        GenerateImageGrid();
+        GenerateRowCountersGrid();
     }
 
-    void GenerateGrid()
+    void GenerateImageGrid()
     {
-        var nSquare = Instantiate(nSquarePrefab, new Vector3(-1, -1), Quaternion.identity);
-        nSquare.SetCount(111);
         squares = new Dictionary<Vector2, Square>();
         foreach (var squareInfoRow in squareInfos.squares) {
 
-            foreach(var squareInfoCol in squareInfoRow.row)
+            foreach(var squareInfoCol in squareInfoRow.column)
             {
                 var spawnedTile = Instantiate(squarePrefab, new Vector3(squareInfoCol.x, squareInfoCol.y), Quaternion.identity);
                 spawnedTile.name = $"Square {squareInfoCol.x} {squareInfoCol.y}";
@@ -61,10 +60,20 @@ public class GridManager : MonoBehaviour
         cam.transform.position = new Vector3((float)width / 2 - 0.5f, (float)height / 2 - 0.5f, -10);
     }
 
-    public Square GetTileAtPosition(Vector2 pos)
+    void GenerateRowCountersGrid()
     {
-        if (squares.TryGetValue(pos, out var tile)) return tile;
-        return null;
+
+        for(var y = 0; y < squareInfos.rowCounters.lineCounters.Count; y++)
+        {
+            var startPointX = 0 - squareInfos.rowCounters.lineCounters[y].counters.Count;
+            foreach (var counter in squareInfos.rowCounters.lineCounters[y].counters)
+            {
+                var nSquare = Instantiate(nSquarePrefab, new Vector3(startPointX, 0 - y), Quaternion.identity);
+                nSquare.SetCount(counter);
+                nSquare.name = $"NSquare: {startPointX} {0 - y}";
+                startPointX++;
+            }
+        }
     }
 
     IEnumerator GetRequest(string uri)

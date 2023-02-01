@@ -27,43 +27,43 @@ namespace NoNoGramBackend.Squares
             return blackLines;
         }
 
-        public static ColumnCouners GetColumnCouners(List<SquareInfoRow> squares)
+        public static RowCounters GetRowsCounters(List<SquareInfoColumn> squares)
         {
-            var columnsCounters = new List<LineCouners>();
+            var rowsCounters = new List<LineCounters>();
 
-            GetColumns(squares).ForEach(column =>
+            GetRows(squares).ForEach(row =>
             {
-                var lineCouners = new LineCouners
+                var lineCounters = new LineCounters
                 {
-                    Couners = GetBlackLinesCounters(column)
+                    Counters = GetBlackLinesCounters(row)
                 };
 
 
-                columnsCounters.Add(lineCouners);
+                rowsCounters.Add(lineCounters);
             });
 
-            return new ColumnCouners
+            return new RowCounters
             {
-                LineCouners = columnsCounters
+                LineCounters = rowsCounters
             };
         }
 
-        private static List<List<SquareInfo>> GetColumns(List<SquareInfoRow> squares)
+        private static List<List<SquareInfo>> GetRows(List<SquareInfoColumn> squares)
         {
-            var columns = new List<List<SquareInfo>>();
+            var rows = new List<List<SquareInfo>>();
 
-            for (int i = 0; i < squares.First().Row.Count; i++)
+            for (int i = 0; i < squares.First().Column.Count; i++)
             {
-                var column = new List<SquareInfo>();
-                squares.ForEach(row =>
+                var row = new List<SquareInfo>();
+                squares.ForEach(column =>
                 {
-                    column.Add(row.Row[i]);
+                    row.Add(column.Column[i]);
                 });
 
-                columns.Add(column);
+                rows.Add(row);
             }
 
-            return columns;
+            return rows;
         }
 
     }

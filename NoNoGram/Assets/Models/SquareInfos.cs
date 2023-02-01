@@ -6,6 +6,10 @@ namespace NoNoGramBackend
     [Serializable]
     public class SquareInfos
     {
-        public List<SquareInfoRow> squares;
+        public List<SquareInfoColumn> squares;
+
+        public RowCounters rowCounters;
+
+        public ColumnCounters columnCounters;
     }
 }

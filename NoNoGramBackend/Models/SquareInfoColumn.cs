@@ -3,13 +3,13 @@ using NoNoGramBackend.Squares;
 
 namespace NoNoGramBackend.Models
 {
-    public class SquareInfoRow
+    public class SquareInfoColumn
     {
-        public List<SquareInfo> Row { get; set; }
+        public List<SquareInfo> Column { get; set; }
 
         public List<int> GetBlackLines()
         {
-            return SquareUtil.GetBlackLinesCounters(Row);
+            return SquareUtil.GetBlackLinesCounters(Column);
         }
     }
 }
