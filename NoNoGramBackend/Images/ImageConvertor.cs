@@ -50,7 +50,7 @@ namespace NoNoGramBackend
                     {
                         Color = GetSquareColor(squareImage),
                         X = i,
-                        Y = j
+                        Y = 0-j
                     });
                 }
 
