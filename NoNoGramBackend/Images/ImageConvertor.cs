@@ -65,7 +65,7 @@ namespace NoNoGramBackend
             return new SquareInfos()
             {
                 Squares = squareInfos,
-                ColumnCounters = null,
+                ColumnCounters = SquareUtil.GetColumnCounters(squareInfos),
                 RowCounters = SquareUtil.GetRowsCounters(squareInfos)
             };
         }

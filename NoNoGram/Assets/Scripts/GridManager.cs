@@ -2,8 +2,6 @@ using NoNoGramBackend;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -27,6 +25,7 @@ public class GridManager : MonoBehaviour
         height = squareInfos.squares.Count;
         GenerateImageGrid();
         GenerateRowCountersGrid();
+        GenerateColumnCountersGrid();
     }
 
     void GenerateImageGrid()
@@ -72,6 +71,21 @@ public class GridManager : MonoBehaviour
                 nSquare.SetCount(counter);
                 nSquare.name = $"NSquare: {startPointX} {0 - y}";
                 startPointX++;
+            }
+        }
+    }
+
+    void GenerateColumnCountersGrid()
+    {
+        for (var x = 0; x < squareInfos.columnCounters.lineCounters.Count; x++)
+        {
+            var startPointY = squareInfos.columnCounters.lineCounters[x].counters.Count;
+            foreach (var counter in squareInfos.columnCounters.lineCounters[x].counters)
+            {
+                var nSquare = Instantiate(nSquarePrefab, new Vector3(x, startPointY), Quaternion.identity);
+                nSquare.SetCount(counter);
+                nSquare.name = $"NSquare: {x} {startPointY}";
+                startPointY--;
             }
         }
     }
