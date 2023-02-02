@@ -21,8 +21,8 @@ public class GridManager : MonoBehaviour
         var req = GetRequest("https://localhost:7010/random_game?squareSize=3");
         while (req.MoveNext());
 
-        width = squareInfos.squares.First().column.Count;
-        height = squareInfos.squares.Count;
+        height = squareInfos.squares.First().column.Count + 5;
+        width = squareInfos.squares.Count - 5;
         GenerateImageGrid();
         GenerateRowCountersGrid();
         GenerateColumnCountersGrid();
@@ -56,7 +56,7 @@ public class GridManager : MonoBehaviour
             }
         }
 
-        cam.transform.position = new Vector3((float)width / 2 - 0.5f, (float)height / 2 - 0.5f, -10);
+        cam.transform.position = new Vector3((float)width / 2 - 0.5f, (float)(0 - height)/2 - 0.5f, -10);
     }
 
     void GenerateRowCountersGrid()
