@@ -27,6 +27,25 @@ namespace NoNoGramBackend.Squares
             return blackLines;
         }
 
+        public static ColumnCounters GetColumnCounters(List<SquareInfoColumn> columns)
+        {
+            var columnsCounters = new List<LineCounters>();
+            columns.ForEach(column =>
+            {
+                var lineCounter = new LineCounters
+                {
+                    Counters = column.GetBlackLines()
+                };
+
+                columnsCounters.Add(lineCounter);
+            });
+
+            return new ColumnCounters
+            {
+                LineCounters = columnsCounters
+            };
+        }
+
         public static RowCounters GetRowsCounters(List<SquareInfoColumn> squares)
         {
             var rowsCounters = new List<LineCounters>();
