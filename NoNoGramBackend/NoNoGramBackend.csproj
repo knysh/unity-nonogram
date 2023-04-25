@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\dragonfly.png" />
+    <None Remove="Resources\hedgehog.png" />
+    <None Remove="Resources\lizard.png" />
+    <None Remove="Resources\sheep.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\dragonfly.png" />
+    <EmbeddedResource Include="Resources\hedgehog.png" />
+    <EmbeddedResource Include="Resources\lizard.png" />
+    <EmbeddedResource Include="Resources\sheep.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SkiaSharp" Version="2.88.3" />
+    <PackageReference Include="System.Drawing.Common" Version="7.0.0" />
+  </ItemGroup>
+
+</Project>
